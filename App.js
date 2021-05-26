@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
@@ -8,9 +7,7 @@ import { AppNavigator } from './components/AppNavigator';
 import configureStore from './components/redux/configureStore';
 import { LoadingScreen } from './components/Screens/LoadingScreen';
 
-
 const { store, persistor } = configureStore();
-
 
 export default function App() {
   return (
@@ -29,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //alignItems: 'center',
-    textAlign:'center',
+    textAlign: 'center',
     justifyContent: 'center',
   },
 });

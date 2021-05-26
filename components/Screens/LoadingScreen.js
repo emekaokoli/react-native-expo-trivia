@@ -1,7 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
-
 export const LoadingScreen = () => {
   return (
     <View style={styles.loadingView}>
@@ -9,7 +8,7 @@ export const LoadingScreen = () => {
       <Text style={styles.loadingText}>Loading . . .</Text>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   loadingView: {
     alignItems: 'center',

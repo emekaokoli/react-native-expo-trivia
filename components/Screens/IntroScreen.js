@@ -3,9 +3,6 @@ import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { fetchData } from '../redux/ActionCreators';
 
-
- 
-
 const IntroScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
@@ -35,7 +32,6 @@ const IntroScreen = ({ navigation }) => {
 
 export default IntroScreen;
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -51,8 +47,7 @@ const styles = StyleSheet.create({
     //margin: 10,
     // alignItems: 'center',
     // justifyContent: 'center',
-    textAlign:'center'
-    
+    textAlign: 'center',
   },
   texts: {
     flex: 3,

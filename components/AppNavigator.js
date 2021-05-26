@@ -5,7 +5,6 @@ import IntroScreen from './Screens/IntroScreen';
 import QuizScreen from './Screens/QuizScreen';
 import Restart from './Screens/Restart';
 
-
 const HeaderOptions = {
   headerStyle: {
     backgroundColor: 'skyblue',
@@ -22,7 +21,7 @@ export const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={HeaderOptions}>
         <Stack.Screen name='Home' component={IntroScreen} />
-        {(props) => <Restart {...props}/>}
+        {(props) => <Restart {...props} />}
         <Stack.Screen name='Quiz' component={QuizScreen} />
       </Stack.Navigator>
     </NavigationContainer>

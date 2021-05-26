@@ -3,7 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { LoadingScreen } from './LoadingScreen';
 
 export default function CardScreen(props) {
-
   if (props.isLoading) {
     return (
       <View>

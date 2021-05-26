@@ -19,35 +19,35 @@ export default function Restart(props) {
   });
   return (
     // <SafeAreaView>
-      <View style={styles.container}>
-        <Text style={styles.scoreText}>Your Score Sheet</Text>
+    <View style={styles.container}>
+      <Text style={styles.scoreText}>Your Score Sheet</Text>
 
-        <Text style={styles.answersLength}>
-          Total Questions: {props.answers.length}
-        </Text>
+      <Text style={styles.answersLength}>
+        Total Questions: {props.answers.length}
+      </Text>
 
-        <Text style={styles.TFtexts}>True: {getAnswers['True']}</Text>
-        <Text style={styles.TFtexts}>False: {getAnswers['False']}</Text>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              props.navigation.navigate('Home'),
-                //persistor.purge(),
-                dispatch(resetQuiz()),
-                dispatch(fetchData());
-            }}
-          >
-            <Text style={styles.ButtonText}>Restart</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => props.navigation.navigate.reset()}
-          >
-            <Text style={styles.ButtonText}>Cancel</Text>
-          </TouchableOpacity>
-        </View>
+      <Text style={styles.TFtexts}>True: {getAnswers['True']}</Text>
+      <Text style={styles.TFtexts}>False: {getAnswers['False']}</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            props.navigation.navigate('Home'),
+              //persistor.purge(),
+              dispatch(resetQuiz()),
+              dispatch(fetchData());
+          }}
+        >
+          <Text style={styles.ButtonText}>Restart</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => props.navigation.navigate.reset()}
+        >
+          <Text style={styles.ButtonText}>Cancel</Text>
+        </TouchableOpacity>
       </View>
+    </View>
     // </SafeAreaView>
   );
 }

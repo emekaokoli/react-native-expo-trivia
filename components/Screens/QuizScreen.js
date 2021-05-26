@@ -6,7 +6,6 @@ import CardScreen from './CardScreen';
 import Restart from './Restart';
 
 export default function QuizScreen(props) {
-
   const { currentQuestion, isLoading, errMess, nextQuestion } = useSelector(
     (state) => ({
       nextQuestion: state.nextQuestion,
@@ -34,7 +33,6 @@ export default function QuizScreen(props) {
       console.log('na false');
       console.log(nextQuestion.incorrect_answer);
     }
-
 
     fetchDispatch();
   }, [currentQuestion, nextQuestionIndex, getNextQuestion]);
