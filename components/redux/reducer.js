@@ -1,14 +1,12 @@
 import * as ActionTypes from '../redux/ActionTypes';
 const initialState = {
-    isLoading: true,
-    errMess: null,
-    questions: [],
-    nextQuestion: {},
-    currentQuestion: 0,
-
-}
-export const questionsReducer = (
-  state = initialState, action,) => {
+  isLoading: true,
+  errMess: null,
+  questions: [],
+  nextQuestion: {},
+  currentQuestion: 0,
+};
+export const questionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.INITIAL_FETCH: {
       return {
@@ -28,7 +26,7 @@ export const questionsReducer = (
 
     case ActionTypes.GET_NEXT_QUESTION: {
       const data = state.questions[0][action.payload];
-      
+
       return {
         ...state,
         errMess: null,

@@ -16,10 +16,9 @@ export const fetchData = () => {
       const result = response.data.results;
 
       dispatch(InitialFetch(result));
-    } catch (error){
-      dispatch(questionsFailed((error)));
-     
-    };
+    } catch (error) {
+      dispatch(questionsFailed(error));
+    }
   };
 };
 export const InitialFetch = (data) => ({
