@@ -1,33 +1,43 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { fetchData, resetQuiz } from '../redux/ActionCreators';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchData, resetQuiz } from '../redux/quiz.redux.slice';
 import configureStore from '../redux/configureStore';
+import useCorrectAnswer from '../utils/useCorrectAnswer';
+import QuestionList from '../QuestionList'
+
 
 const { persistor } = configureStore();
 
-export default function Restart(props) {
-  //const Reset = useSelector((state) => state.resetQuiz);
+
+export default function Restart({ navigation }) {
   const dispatch = useDispatch();
 
-  const getAnswers = props.answers.map((answer) => {
-    return (
-      <View>
-        <Text>answer</Text>
-      </View>
-    );
-  });
+  const { questions, questionsReponse } = useSelector((state) => ({
+    questions: state.questions,
+    questionsReponse: state.questionsReponse,
+  }));
+
+  const correctAnswer = useCorrectAnswer(questions, questionsReponse)
+    const totalQuestions = questions?.length || 10;
+
+
   return (
     // <SafeAreaView>
     <View style={styles.container}>
-      <Text style={styles.scoreText}>Your Score Sheet</Text>
-
+      <Text style={styles.scoreText}>You Scored</Text>
       <Text style={styles.answersLength}>
-        Total Questions: {props.answers.length}
+        {correctAnswer} {' / '} {totalQuestions}
       </Text>
 
-      <Text style={styles.TFtexts}>True: {getAnswers['True']}</Text>
-      <Text style={styles.TFtexts}>False: {getAnswers['False']}</Text>
+      <View style={styles.TFtexts}>
+        <Text style={styles.TFtexts}>
+          <QuestionList />
+        </Text>
+      </View>
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
@@ -38,7 +48,7 @@ export default function Restart(props) {
               dispatch(fetchData());
           }}
         >
-          <Text style={styles.ButtonText}>Restart</Text>
+          <Text style={styles.ButtonText}>Play again?</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
@@ -51,6 +61,13 @@ export default function Restart(props) {
     // </SafeAreaView>
   );
 }
+Score.propTypes = {
+  questions: Proptypes.arrayOf(Proptypes.string),
+  questionsReponse: Proptypes.arrayOf(
+    Proptypes.objectOf(Proptypes.string)
+  ),
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: -1,

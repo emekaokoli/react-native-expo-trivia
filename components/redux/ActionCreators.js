@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { api } from '../api';
+import { BASE_URL } from '../constants/api';
 import * as ActionTypes from '../redux/ActionTypes';
 
 // function handleErrors(response) {
@@ -12,7 +12,7 @@ export const fetchData = () => {
   return async (dispatch) => {
     dispatch(questionsLoading());
     try {
-      const response = await axios.get(api);
+      const response = await axios.get(BASE_URL);
       const result = response.data.results;
 
       dispatch(InitialFetch(result));

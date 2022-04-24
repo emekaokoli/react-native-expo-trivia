@@ -1,46 +1,55 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { LoadingScreen } from './LoadingScreen';
 
-export default function CardScreen(props) {
-  if (props.isLoading) {
-    return (
-      <View>
-        <LoadingScreen />
+export default function CardScreen({ handleAnswer }) {
+  import { useSelector } from 'react-redux';
+
+  const { question, nextQuestion, currentQuestion, isloading, error } =
+    useSelector((state) => ({
+      question: state.questions,
+      nextQuestion: state.nextQuestion,
+      currentQuestion: state.currentQuestion,
+      isloading: state.isloading,
+      error: state.error,
+    }));
+
+  if (isloading) return <LoadingScreen />;
+
+  if (error) return <Text>{error}</Text>;
+
+  return (
+    <View style={styles.container} key={1}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>{question.category}</Text>
       </View>
-    );
-  } else if (props.errMess) {
-    return (
-      <View>
-        <Text>{props.errMess}</Text>
+      <View style={styles.questions}>
+        <Text style={styles.questionsText}>{question.question}</Text>
       </View>
-    );
-  } else if (props.question != null) {
-    return (
-      <View style={styles.container} key={1}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>{props.question.category}</Text>
-        </View>
-        <View style={styles.questions}>
-          <Text style={styles.questionsText}>{props.question.question}</Text>
-        </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => props.handleTrue('true')}
-          >
-            <Text style={styles.texts}>True</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => props.handleFalse('false')}
-          >
-            <Text style={styles.texts}>False</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => handleAnswer(nextQuestion.correct_answer)}
+        >
+          <Text style={styles.texts}>True</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() =>
+            handleAnswer(nextQuestion.incorrect_answers[0])
+          }
+        >
+          <Text style={styles.texts}>False</Text>
+        </TouchableOpacity>
       </View>
-    );
-  }
+      {currentQuestion} of {question.length}
+    </View>
+  );
 }
 const styles = StyleSheet.create({
   container: {

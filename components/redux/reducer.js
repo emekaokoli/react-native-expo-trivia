@@ -36,7 +36,12 @@ export const questionsReducer = (state = initialState, action) => {
     }
 
     case ActionTypes.QUESTIONS_LOADING: {
-      return { ...state, isLoading: true, errMess: null, questions: [] };
+      return {
+        ...state,
+        isLoading: true,
+        errMess: null,
+        questions: [],
+      };
     }
 
     case ActionTypes.FETCH_FAILED: {

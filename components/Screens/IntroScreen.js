@@ -8,7 +8,7 @@ const IntroScreen = ({ navigation }) => {
 
   React.useEffect(() => {
     function fetchDispatch() {
-      dispatch(fetchData());
+      dispatch(fetchData()); 
     }
     fetchDispatch();
   }, [dispatch, fetchData]);
